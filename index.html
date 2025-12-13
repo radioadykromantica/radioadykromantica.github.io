@@ -1,0 +1,218 @@
+<!DOCTYPE html> <!-- Define el tipo de documento HTML5 -->
+<html lang="es"> <!-- Idioma principal del sitio -->
+
+<head>
+  <!-- Configuración básica del sitio -->
+  <meta charset="UTF-8" /> <!-- Codificación de caracteres -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Adaptación a dispositivos móviles -->
+  <title>Radio ADYK Romántica</title> <!-- Título que aparece en la pestaña del navegador -->
+
+  <!-- Enlace al archivo de estilos CSS externo -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Ícono de la pestaña del navegador -->
+  <link rel="icon" href="Radio ADYK Romantica.png" type="image/png" />
+</head>
+
+<body class="light-mode"> <!-- Cuerpo del sitio con modo claro activado por defecto -->
+
+  <!-- === ENCABEZADO FIJO CON NAVEGACIÓN === -->
+  <header>
+    <!-- Botón para cambiar entre modo claro y oscuro -->
+    <button id="toggle-theme">Cambiar tema</button>
+
+    <!-- Título principal con punto verde animado -->
+    <h1><span class="live-dot"></span>Radio ADYK Romántica</h1>
+
+    <!-- Navegación con íconos hacia secciones internas -->
+    <div class="top-nav">
+      <a href="#inicio" aria-label="Inicio">
+        <img src="boton-de-inicio.png" alt="Inicio" />
+      </a>
+      <a href="#novedades" aria-label="Novedades">
+        <img src="nuevo.png" alt="Novedades" />
+      </a>
+      <a href="#contacto" aria-label="Contacto">
+        <img src="circle-user-svgrepo-com.png" alt="Contacto" />
+      </a>
+    </div>
+  </header>
+<!-- === CONTENIDO PRINCIPAL DEL SITIO === -->
+  <main>
+
+    <!-- === SECCIÓN DE INICIO CON LOGO Y REPRODUCTOR === -->
+    <section id="inicio" class="card fade-in">
+     <!-- Reproductor personalizado para Radio ADYK -->
+<div style="max-width: 400px; margin: auto; background: #52a293; padding: 20px; border-radius: 30px; border: 5px solid #480726; box-shadow: 0 0 12px rgba(214, 51, 132, 0.3); font-family: 'Segoe UI', sans-serif; text-align: center;">
+  
+  <!-- Logo de la emisora -->
+  <img src="Radio ADYK Romantica.png" alt="Logo Radio ADYK Romántica" style="max-width: 100px; margin-bottom: 10px; border-radius: 8px;">
+
+  <!-- Título -->
+  <h3 style="margin: 0; font-size: 1.4em; color: #15020b;"></h3>
+
+  <!-- Reproductor de audio -->
+  <audio id="adyk-player" controls autoplay style="width: 60%; margin-top: 30px; border-radius: 40px;">
+    <source src="https://stream.zeno.fm/1ziptosyq2fvv" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <!-- Metadatos en vivo -->
+  <p id="track-info" style="font-size: 1.em; margin-top: 12px; color: #0d0d0d;">Cargando canción...</p>
+</div>
+
+<script>
+  const streamID = "1ziptosyq2fvv";
+  const metadataURL = `https://api.zeno.fm/mounts/metadata/subscribe/${streamID}`;
+  const trackInfo = document.getElementById("track-info");
+
+  const eventSource = new EventSource(metadataURL);
+  eventSource.onmessage = (event) => {
+    try {
+      const data = JSON.parse(event.data);
+      const streamTitle = data.streamTitle || "Sin título";
+      trackInfo.textContent = "" + streamTitle;
+    } catch (e) {
+      trackInfo.textContent = "No se pudo leer el título.";
+    }
+  };
+
+  eventSource.onerror = () => {
+    trackInfo.textContent = "Error al conectar con los metadatos.";
+  };
+</script>
+    </section>
+
+    <!-- === SECCIÓN DE NOVEDADES CON IMÁGENES Y COMENTARIOS === -->
+    <section id="novedades" class="card fade-in">
+      <h2>Novedades</h2>
+      <p>¡Descubre lo más reciente en Radio ADYK!</p>
+
+      <!-- Tarjetas de novedades con imágenes y texto -->
+      <div class="novedades-grid">
+        <div class="novedad">
+          <img src="Copilot_20250928_195518.png" alt="Concierto Romántico" />
+          <p>Recuerda descargar nuestra App para que lleves la radio en tu bolsillo!</p>
+        </div>
+        <div class="novedad">
+          <img src="una imagen con signo.png" alt="Nueva programación" />
+          <p>Te programamos lo mejor de la música 24/7 de la semana.</p>
+        </div>
+        <div class="novedad">
+          <img src="una imagen simbólica.png" alt="Nueva programación" />
+          <p>Las notas musicales flotando en el aire y los corazones iluminados refuerzan el ambiente íntimo y apasionado</p>
+        </div>
+      </div>
+
+      <!-- Comentario poético con imagen lateral -->
+      <div class="novedades">
+        <div class="novedad-item">
+          <img src="Santa Claus volando .png" alt="Novedad 1" class="novedad-img" />
+          <div class="novedad-comentario">
+            <p>Navidad: susurro de estrellas y abrazos eternos.</p>
+	   <p>La Navidad llega como un suspiro de luz,
+              una caricia del cielo que envuelve la tierra,
+              con copos de esperanza danzando en el aire
+              y melodías que abrazan el alma sin pedir permiso.
+              Es el tiempo donde los sueños despiertan,
+              donde cada rincón se viste de magia,
+              y los corazones laten al ritmo de un “te quiero”
+              que cruza distancias, silencios y recuerdos.
+              Bajo el árbol no solo hay regalos,
+              hay promesas envueltas en papel de ternura,
+              hay miradas que brillan más que las luces,
+              y hay historias que se cuentan sin palabras.
+              Es el milagro de lo simple,
+              el reencuentro con lo que importa,
+              el calor de una taza compartida,
+              y el eco de risas que nunca envejecen.
+              La Navidad no se celebra, se siente.
+              Se vive en cada gesto, en cada abrazo,
+              en cada nota que suena en Radio ADYK Romántica,
+              como un himno al amor, a la paz, y a la belleza de estar juntos.</p>
+          </div>
+        </div>
+      </div>
+	<div class="novedades">
+        <div class="novedad-item">
+          <img src="Copilot_20250928_194602.png" alt="Novedad 1" class="novedad-img" />
+          <div class="novedad-comentario">
+            <p>La música me hace recordar los buenos momentos del ayer...</p>
+            <p>Cada nota es un reflejo de abrazos, risas y pasión...</p>
+            <p>Y aunque el tiempo haya pasado, la canciónes siguen en nuestras memoria...</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- === SECCIÓN DE CONTACTO CON DATOS Y ENLACES === -->
+    <section id="contacto" class="contact-section">
+      <div class="contacto">
+        <!-- Correo electrónico -->
+        <p>
+          <img src="envelope-svgrepo-com.png" alt="Correo" style="width:20px; vertical-align:middle; margin-right:8px;" />
+          Correo: <a href="mailto:radioadyk@gmail.com" target="_blank">radioadyromanticak@gmail.com</a>
+        </p>
+
+        <!-- Enlace para descargar la App -->
+        <p>
+          <img src="arrow-down-circle-svgrepo-com.png" alt="Descarga App" style="width:20px; vertical-align:middle; margin-right:8px;" />
+          Descarga nuestra App: <a href="https://www.appcreator24.com/app3026548-5kxv0u" target="_blank">Desde aquí</a>
+        </p>
+
+        <!-- Teléfono de contacto -->
+        <p>
+          <img src="smartphone.png" alt="Teléfono" style="width:20px; vertical-align:middle; margin-right:8px;" />
+          Teléfono: <a href="tel:+506 60394754" target="_blank">+506 60394754</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- === BARRA FIJA DE REDES SOCIALES === -->
+  <div class="social-bar">
+    <!-- Enlace a Facebook -->
+    <a href="https://www.facebook.com/profile.php?id=61572391267859" class="facebook" aria-label="Facebook" target="_blank">
+      <img src="facebook-svgrepo-com.png" alt="Facebook" />
+    </a>
+
+    <!-- Enlace a YouTube -->
+    <a href="https://www.youtube.com/@RadioADYK" class="youtube" aria-label="YouTube" target="_blank">
+      <img src="youtube-svgrepo-com.png" alt="YouTube"/>
+    </a>
+
+    <!-- Enlace a Telegram -->
+    <a href="https://t.me/radioADYK" class="telegram" aria-label="Telegram" target="_blank">
+      <img src="telegram-svgrepo-com.png" alt="Telegram" />
+    </a>
+  </div>
+
+  <!-- === PIE DE PÁGINA CON CRÉDITOS Y ENLACE EXTERNO === -->
+  <footer>
+    &copy; 2025 Radio ADYK. Todos los derechos reservados.
+    <a href="https://radios.co.cr/" target="_blank">
+      <img src="https://cdn.webrad.io/images/banners/radios-online-big.png" alt="radios.co.cr" width="30" height="30" />
+    </a>
+  </footer>
+
+  <!-- === SCRIPT PARA CAMBIO DE TEMA CLARO/OSCURO === -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleButton = document.getElementById("toggle-theme");
+      const body = document.body;
+
+      // Alterna entre modo claro y oscuro al hacer clic
+      toggleButton.addEventListener("click", function () {
+        if (body.classList.contains("light-mode")) {
+          body.classList.remove("light-mode");
+          body.classList.add("dark-mode");
+        } else {
+          body.classList.remove("dark-mode");
+          body.classList.add("light-mode");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
